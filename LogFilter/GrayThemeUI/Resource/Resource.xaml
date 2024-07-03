@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--#region +-마스크 -->
+    <ImageBrush x:Key="GrayThemeUI.PlusMask" ImageSource="pack://application:,,,/GrayThemeUI;component/Resource/Mask/plus_mask.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="GrayThemeUI.MinusMask"  ImageSource="pack://application:,,,/GrayThemeUI;component/Resource/Mask/minus_mask.png" Stretch="Uniform"/>
+    <!--#endregion-->
+    <!--#region UpDown마스크 -->
+    <ImageBrush x:Key="GrayThemeUI.UpMask" ImageSource="pack://application:,,,/GrayThemeUI;component/Resource/Mask/up_mask.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="GrayThemeUI.DownMask"  ImageSource="pack://application:,,,/GrayThemeUI;component/Resource/Mask/down_mask.png" Stretch="Uniform"/>
+    <!--#endregion-->
+    <!--#region Check마스크 -->
+    <ImageBrush x:Key="GrayThemeUI.CheckMask" ImageSource="pack://application:,,,/GrayThemeUI;component/Resource/Mask/check_mask.png" Stretch="Uniform"/>
+    <!--#endregion-->
+</ResourceDictionary>
+

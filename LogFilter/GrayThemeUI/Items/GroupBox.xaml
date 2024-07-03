@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:themeUI="clr-namespace:GrayThemeUI">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/GrayThemeUI;component/Theme/Common.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/GrayThemeUI;component/Items/Label.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="GrayThemeUI.GroupBox" TargetType="GroupBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource GrayThemeUI.Theme.Foreground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource GrayThemeUI.Theme.Foreground.Disable}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource GrayThemeUI.Common.BorderThickness}"/>
+        <Setter Property="FontSize" Value="{StaticResource GrayThemeUI.Common.FontSize.Default}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Border x:Name="rootBorder"
+                            Background="Transparent"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0"
+                                   Style="{StaticResource GrayThemeUI.LabeledSeparator}"
+                                   Background="{TemplateBinding Background}"
+                                   BorderBrush="Transparent"
+                                   Padding="0"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   BorderThickness="0">
+                                <Label.Content>
+                                    <ContentPresenter ContentSource="Header"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Top"/>
+                                </Label.Content>
+                            </Label>
+                           <ContentControl Grid.Row="1"
+                                            FontSize="{StaticResource GrayThemeUI.Common.FontSize.Default}">
+                                <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                            </ContentControl>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="rootBorder" Property="BorderBrush" Value="{StaticResource GrayThemeUI.Theme.Foreground.Disable}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/GrayThemeUI;component/Theme/Common.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <!-- Normal Label  -->
+    <Style x:Key="GrayThemeUI.Label" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource GrayThemeUI.Theme.Foreground}"/>
+        <Setter Property="Background" Value="{StaticResource GrayThemeUI.Theme.Background}"/>
+        <Setter Property="FontSize" Value="{StaticResource GrayThemeUI.Common.FontSize.Default}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource GrayThemeUI.Theme.Foreground.Disable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Separator Label  -->
+    <Style x:Key="GrayThemeUI.LabeledSeparator" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource GrayThemeUI.Common.FontSize.Header1}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <StackPanel Orientation="Vertical" >
+                        <Label x:Name="label"
+                               Content="{TemplateBinding Content}" 
+                               Style="{StaticResource GrayThemeUI.Label}"
+                               FontSize="{TemplateBinding FontSize}"
+                               Margin="5,0,0,0"/>
+                        <Separator x:Name="separator" Background="{StaticResource GrayThemeUI.Common.LineColor}" Height="1" Margin="0"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="separator" Property="Background" Value="{StaticResource GrayThemeUI.Theme.Foreground.Disable}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
