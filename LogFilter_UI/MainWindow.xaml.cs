@@ -19,8 +19,11 @@ namespace LogFilter_UI
 
         private void SelectSourcePath(object sender, RoutedEventArgs e)
         {
-            LogFilter.ViewModel dataContext = null;
+            LogFilter.ViewModel? dataContext = null;
+            
             if (CasttingDataContext(ref dataContext, true) is false)
+                return;
+            if (dataContext is null)
                 return;
             dataContext.FileCopySrcDir = SelectedFolder(dataContext.FileCopySrcDir);
         }
@@ -29,6 +32,8 @@ namespace LogFilter_UI
         {
             LogFilter.ViewModel dataContext = null;
             if (CasttingDataContext(ref dataContext, true) is false)
+                return;
+            if (dataContext is null)
                 return;
             dataContext.FileCopyDestDir = SelectedFolder(dataContext.FileCopyDestDir);
         }
@@ -58,7 +63,9 @@ namespace LogFilter_UI
         private bool CasttingDataContext<T>(ref T dataContext, bool popupMessage = false) where T : class
         {
             bool result = true;
+#pragma warning disable CS8601 // 가능한 null 참조 할당입니다.
             dataContext = DataContext as T;
+#pragma warning restore CS8601 // 가능한 null 참조 할당입니다.
             if (dataContext is null)
                 result = false;
             if (result is false && popupMessage is true)
@@ -66,7 +73,7 @@ namespace LogFilter_UI
             return result;
         }
 
-        private DirectoryInfo SelectedFolder(DirectoryInfo prevDirectoryInfo)
+        private DirectoryInfo? SelectedFolder(DirectoryInfo prevDirectoryInfo)
         {
             if (prevDirectoryInfo is null)
             {
@@ -78,7 +85,9 @@ namespace LogFilter_UI
                 CheckPathExists = true, InitialDirectory = prevDirectoryInfo.FullName,
                 FileName = "folder", Title = "폴더 선택", Multiselect = false };
             if (dialog.ShowDialog() is true)
-                return new DirectoryInfo(System.IO.Path.GetDirectoryName(dialog.FileName));
+#pragma warning disable CS8604 // 가능한 null 참조 인수입니다.
+                return new DirectoryInfo(Path.GetDirectoryName(dialog.FileName));
+#pragma warning restore CS8604 // 가능한 null 참조 인수입니다.
             return prevDirectoryInfo;
         }
     }
